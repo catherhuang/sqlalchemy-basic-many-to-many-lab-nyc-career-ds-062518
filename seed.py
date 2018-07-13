@@ -3,11 +3,14 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from models import Actor, Role, ActorRole, engine
 
-Base = declarative_base()
 
+
+Base = declarative_base()
+engine = create_engine('sqlite:///actorroles.db')
 session = sessionmaker()
 session.configure(bind=engine)
 Base.metadata.bind = engine
+
 
 session = session()
 
